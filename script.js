@@ -1,5 +1,6 @@
 const input = document.getElementById("task-content");
 const submit = document.getElementById("task-add");
+const orderby_choice = document.getElementById("orderby_select");
 const url = 'http://crabrave.ddns.net:51001/';
 
 submit.addEventListener('click', () =>{
@@ -22,11 +23,17 @@ submit.addEventListener('click', () =>{
     }
 });
 
-// This is working (TODO doc )
+// This is working (TODO doc and maybe fix taskAllSorted which never happens because Jacques went eat...)
 const getData = () => {
 
     const request = new XMLHttpRequest();
-    request.open('GET', url+"api-tdl/taskAll", true);
+    if(orderby_choice.value == "")
+    {
+        request.open('GET', url+"api-tdl/taskAll", true)
+    }
+    else{
+    request.open('GET', url+"api-tdl/taskAllSorted?orderby="+ orderby_choice.value, true);
+    }
     request.send(null);
     request.onreadystatechange = () => {
         if (request.readyState === 4 && request.status === 200)
@@ -45,29 +52,9 @@ const getData = () => {
                 div.className = "row mt-lg-1 mt-sm-3 mt-xl-2 mt-xs-3";
                 let task =  document.createElement('P');
                 let btn = document.createElement("BUTTON");
-                let checkbox = document.createElement("INPUT");
-                checkbox.type="checkbox";
-                checkbox.name="name";
-                checkbox.value="value";
-                checkbox.checked = x.isdone;
-                checkbox.id="id";
 
-                checkbox.className = "col-lg-1 styled col-sm-2";
                 insertPlace.appendChild(div);
-                div.appendChild(checkbox);
 
-                checkbox.addEventListener('input', () => {
-                    const request = new XMLHttpRequest();
-                    let tmp = (!x.isdone) ? 't' : 'f';
-                    console.log(x.isdone);
-                    request.open('GET', url + "api-tdl/changeCheck?content=" + x.content + "&isdone=" + tmp, true);
-                    request.send(null);
-
-                    //redisplay data when one is deleted
-                    request.onreadystatechange = () => {
-                        if (request.readyState === 4 && request.status === 200) getData();
-                    };
-                });
                 btn.innerHTML = "Remove";
                 btn.className = "col-lg-1 btn-danger col-sm-2";
 
