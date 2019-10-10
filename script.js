@@ -1,7 +1,9 @@
 const input = document.getElementById("task-content");
 const submit = document.getElementById("task-add");
 const orderby_choice = document.getElementById("orderby_select");
+const orderby_button = document.getElementById("orderby_button");
 const url = 'http://crabrave.ddns.net:51001/';
+
 
 submit.addEventListener('click', () =>{
     console.log(input.value);
@@ -23,9 +25,8 @@ submit.addEventListener('click', () =>{
     }
 });
 
-// This is working (TODO doc and maybe fix taskAllSorted which never happens because Jacques went eat...)
+// This is working (TODO doc)
 const getData = () => {
-
     const request = new XMLHttpRequest();
     if(orderby_choice.value == "")
     {
