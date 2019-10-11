@@ -3,7 +3,7 @@ const submit = document.getElementById("task-add");
 const orderby_choice = document.getElementById("orderby_select");
 const orderby_button = document.getElementById("orderby_button");
 //const url = 'http://crabrave.ddns.net:51001/';
-const url ='91.163.2.126:51002/'; //test purpose only
+const url ='http://91.163.2.126:51002/'; //test purpose only
 
 
 submit.addEventListener('click', () =>{
@@ -12,6 +12,16 @@ submit.addEventListener('click', () =>{
     const request = new XMLHttpRequest();
     console.log("HERE ");
 
+    let addForm = document.getElementById('task-add-form');
+    let newTask = {
+        "name": addForm.namedItem('task-name'),
+        "details": addForm.namedItem('task-details'),
+        "deadline": addForm.namedItem('task-deadline'),
+        "whendo": addForm.namedItem('task-whendo'),
+        "timeneeded": addForm.namedItem('task-timeneeded'),
+        "category_name": addForm.namedItem('task-category')
+    }
+    //TODO review next 3 lines to fit with new DB format
     request.open('GET', url + "api-tdl/add?content=" +input.value +"&isdone=f", true);
     request.send(null);
     console.log("HERE ");
@@ -72,7 +82,7 @@ const getData = () => {
                         if (request.readyState === 4 && request.status === 200) getData();
                     };
                 });
-                task.innerText = x.content;
+                task.innerText = x.name;
                 task.className = "col-lg-6 col-sm-10";
 
                 //TODO add some content (checkbox for instance)
