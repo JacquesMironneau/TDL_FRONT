@@ -2,7 +2,8 @@ const input = document.getElementById("task-content");
 const submit = document.getElementById("task-add");
 const orderby_choice = document.getElementById("orderby_select");
 const orderby_button = document.getElementById("orderby_button");
-const url = 'http://crabrave.ddns.net:51001/';
+//const url = 'http://crabrave.ddns.net:51001/';
+const url ='91.163.2.126:51002/'; //test purpose only
 
 
 submit.addEventListener('click', () =>{
@@ -30,10 +31,10 @@ const getData = () => {
     const request = new XMLHttpRequest();
     if(orderby_choice.value == "")
     {
-        request.open('GET', url+"api-tdl/taskAll", true)
+        request.open('GET', url+"api-tdl/getAllSorted?orderby=id", true)
     }
     else{
-    request.open('GET', url+"api-tdl/taskAllSorted?orderby="+ orderby_choice.value, true);
+    request.open('GET', url+"api-tdl/getAllSorted?orderby="+ orderby_choice.value, true);
     }
     request.send(null);
     request.onreadystatechange = () => {

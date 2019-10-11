@@ -10,24 +10,27 @@
 </head>
 <body>
 <h1> To do list device</h1>
+<div class="container">
+    <label for="orderby_select">Trier par :</label>
+    <form>
+        <select id="orderby_select" name="orderby" size="1">
+            <option selected>
+            <option value="name"> Nom
+            <option value="deadline">Date Fin
+            <option value="whendo"> Pour quand
+            <option value="timeneeded">Temps nécessaire
+            <option value="category_name">Catégorie
+        </select>
+        <input id="orderby_button" type="button" value="Trier" onclick="getData();" />
+    </form>
+</div>
 <div id="tdl-content" class="container">
     <p>testing purpose only</p>
 
 </div>
 <div class="container">
         <div class="center-block">
-		<label for="orderby_select">Trier par :</label>
-		<form>
-			<select id="orderby_select" name"orderby" size="1">
-				<option selected>
-				<option value="name"> Nom
-				<option value="deadline">Date Fin
-				<option value="whendo"> Pour quand
-				<option value="timeneeded">Temps nécessaire
-				<option value="category_name">Catégorie
-            </select>
-            <input id="orderby_button" type="button" value="Trier" onclick="getData();" />
-		</form>
+		
             <label for="task-content">Task</label>
             <input type="text" id="task-content" name="task-content">
             <button type="button" id='task-add' class="btn btn-primary btn-circle btn-lg"><i class="fa fa-plus " ></i></button>
