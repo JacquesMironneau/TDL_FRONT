@@ -19,7 +19,7 @@
 		<label for="orderby_select">Trier par :</label>
 		<form>
 			<select id="orderby_select" name"orderby" size="1">
-				<option selected>
+				<option selected value="id">
 				<option value="name"> Nom
 				<option value="deadline">Date Fin
 				<option value="whendo"> Pour quand
@@ -27,10 +27,30 @@
 				<option value="category_name">Catégorie
             </select>
             <input id="orderby_button" type="button" value="Trier" onclick="getData();" />
-		</form>
-            <label for="task-content">Task</label>
-            <input type="text" id="task-content" name="task-content">
+        </form>
+        
+
+        <form>
+            <label for="name">Tache</label>
+            <input type="text" id="name" name="name">
+
+            <label for="deadline">Deadline</label>
+            <input type="date" id="deadline" name="deadline">
+
+            <label for="whendo">A faire le</label>
+            <input type="date" id="whendo" name="whendo">
+
+            <label for="timeneeded">Temps nécessaire</label>
+            <input type="time" id="timeneeded" name="timeneeded">
+            <!-- TODO get categories from databse-->
+            <label for="category_name_list">Catégorie</label>
+            <select id="category_name_list" name="category_name_list" size="1">
+
+            </select>
+            
+
             <button type="button" id='task-add' class="btn btn-primary btn-circle btn-lg"><i class="fa fa-plus " ></i></button>
+        </form>
         </div>
 </div>
 

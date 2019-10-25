@@ -2,8 +2,8 @@ const input = document.getElementById("task-content");
 const submit = document.getElementById("task-add");
 const orderby_choice = document.getElementById("orderby_select");
 const orderby_button = document.getElementById("orderby_button");
-const url = 'http://crabrave.ddns.net:51001/';
-
+//const url = 'http://crabrave.ddns.net:51001/';
+const url = 'http://172.26.122.7:51002';
 
 submit.addEventListener('click', () =>{
     console.log(input.value);
@@ -28,13 +28,8 @@ submit.addEventListener('click', () =>{
 // This is working (TODO doc)
 const getData = () => {
     const request = new XMLHttpRequest();
-    if(orderby_choice.value == "")
-    {
-        request.open('GET', url+"api-tdl/taskAll", true)
-    }
-    else{
-    request.open('GET', url+"api-tdl/taskAllSorted?orderby="+ orderby_choice.value, true);
-    }
+    request.open('GET', url+"api-tdl/getAllSorted?orderby="+ orderby_choice.value, true);
+    
     request.send(null);
     request.onreadystatechange = () => {
         if (request.readyState === 4 && request.status === 200)
@@ -86,5 +81,22 @@ const getData = () => {
 //Get data when refresh/ first connection
 getData();
 
+//Get categories of task from db
+const request = new XMLHttpRequest();
+    request.open('GET', url+"api-tdl/getCategories", true);
+    request.send(null);
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200)
+        {
+            let insertPlace = document.getElementById('category_name_list');
+            const t = JSON.parse(request.response);
+            t.forEach(x =>
+            {
+                let option = document.createElement("option");
+                option.value = x.content;
+                option.label = x.content;
 
-
+                insertPlace.appendChild(option);
+            })
+        }
+    };
