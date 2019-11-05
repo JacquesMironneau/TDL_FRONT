@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,3 +60,67 @@
 </html>
 <script type="text/javascript" src="script.js"></script>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap, my css & fontawesome icons-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Awesome cross plat tdl</title>
+</head>
+<body>
+<h1> To do list device</h1>
+<div class="container">
+    <label for="orderby_select">Trier par :</label>
+    <form>
+        <select id="orderby_select" name="orderby" size="1">
+            <option selected>
+            <option value="name"> Nom
+            <option value="deadline">Date Fin
+            <option value="whendo"> Pour quand
+            <option value="timeneeded">Temps nécessaire
+            <option value="category_name">Catégorie
+        </select>
+        <input id="orderby_button" type="button" value="Trier" onclick="getData();" />
+    </form>
+</div>
+<div id="tdl-content" class="container">
+    <p>testing purpose only</p>
+
+</div>
+<div class="container">
+        <div class="center-block">
+		<form id='task-add-form'>
+            <label for="task-name">Nom</label>
+            <input type="text" id="task-name" name="task-name">
+
+            <label for="task-details">Details</label>
+            <input type ="text" id="task-details" name="task-details">
+
+            <label for="task-deadline">Deadline</label>
+            <input type ="date" id="task-deadline" name="task-deadline">
+
+            <label for="task-whendo">Faire le</label>
+            <input type ="date" id="task-whendo" name="task-whendo">
+
+            <label for="task-timeneeded">Durée</label>
+            <input type ="time" id="task-timeneeded" name="task-timeneeded">
+
+            <label for="task-deadline">Deadline</label>
+            <select id="task-category" name="task-category" size="1">
+                <!-- TODO get all category from database and create list dynamically-->
+            </select>
+        </form>
+        <button type="button" id='task-add' class="btn btn-primary btn-circle btn-lg"><i class="fa fa-plus " ></i></button>
+        </div>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="script.js"></script>
+
+>>>>>>> 634de770a994b93fba5ea469bc207f7533cf5955
